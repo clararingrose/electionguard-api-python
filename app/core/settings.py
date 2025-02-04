@@ -48,10 +48,10 @@ class Settings(BaseSettings):
 
     AUTH_ALGORITHM = "HS256"
     # JWT secret that matches AUTH_ALGORITHM. Change this to a valid value.
-    AUTH_SECRET_KEY = "<this is a default value and should be changed>"
+    AUTH_SECRET_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTczODY4Mjc5MCwiaWF0IjoxNzM4NjgyNzkwfQ.x7o98H8qkwJVUDNF2WWo1Fp_pD7QG7o8q8X3OKA0pew"
     AUTH_ACCESS_TOKEN_EXPIRE_MINUTES = 30
     DEFAULT_ADMIN_USERNAME = "default"
-    DEFAULT_ADMIN_PASSWORD = "<this is a default value and should be changed>"
+    DEFAULT_ADMIN_PASSWORD = "testingpass"
     # this is a default value that will be moving to the environment settings
     # the default value should not be used for production use
 
