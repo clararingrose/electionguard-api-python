@@ -119,12 +119,21 @@ def create_user(
 
     # TODO: generate passwords differently
     new_password = b64encode(b16decode(rand_q().to_hex()[0:16]))
+    # new_password = b64encode(b16decode('password'))
     hashed_password = AuthenticationContext(
         request.app.state.settings
     ).get_password_hash(new_password)
     credential = AuthenticationCredential(
         username=user_info.username, hashed_password=hashed_password
     )
+
+    # testing: enable user to input password
+    # hashed_password = AuthenticationContext(
+    #     request.app.state.settings
+    # ).get_password_hash(user_info.password)
+    # credential = AuthenticationCredential(
+    #     username=user_info.username, hashed_password=hashed_password
+    # )
 
     set_auth_credential(credential, request.app.state.settings)
     set_user_info(user_info, request.app.state.settings)
@@ -137,7 +146,7 @@ def create_user(
     dependencies=[ScopedTo([UserScope.admin])],
     tags=[USER],
 )
-async def reset_password(request: Request, username: str) -> Any:
+async def reset_password(request: Request, username: str, password: str) -> Any:
     """Reset a user's password."""
 
     credential = get_auth_credential(
@@ -146,11 +155,11 @@ async def reset_password(request: Request, username: str) -> Any:
     )
 
     # TODO: generate passwords differently
-    new_password = b64encode(b16decode(rand_q().to_hex()[0:16]))
+    # new_password = b64encode(b16decode(rand_q().to_hex()[0:16]))
     credential.hashed_password = AuthenticationContext(
         request.app.state.settings
-    ).get_password_hash(new_password)
+    ).get_password_hash(password)
 
     update_auth_credential(credential, request.app.state.settings)
 
-    return {"username": username, "password": new_password}
+    return {"username": username, "password": password}

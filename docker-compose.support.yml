@@ -2,7 +2,7 @@
 # It mounts the codebase within the container and runs the APIs
 # with hot reload enabled.
 
-version: "3.8"
+# version: "3.8"
 services:
   messagequeue:
     image: rabbitmq:3.8.16-management-alpine
