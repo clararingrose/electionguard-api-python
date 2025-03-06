@@ -39,7 +39,11 @@ class Settings(BaseSettings):
             "http://localhost",
             "http://localhost:8080",
             "http://localhost:3001",
+            "http://localhost:3002",
             "https://localhost",
+            "https://localhost:8080",
+            "https://localhost:3001",
+            "https://localhost:3002",
         ]
     )
     PROJECT_NAME: str = "electionguard-api-python"
